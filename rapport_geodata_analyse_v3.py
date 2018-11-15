@@ -24,7 +24,7 @@ def uitleg():
     print "Het verwachte format is:" 
     print "<bestandspad van python .exe> <bestandspad van analyse script .py> <bestandspad van het inputbestand> <bestandspad van het outputbestand>"
     print "Voorbeeld:"
-    print "C:\\ProgramData\\Anaconda2\\python.exe D:\\ov\\py\\luc\\rapport_geodata_analyse_v3.py D:\\ov\\rapport_geodata\\rapport_geodata_2018117.txt D:\\ov\\rapport_geodata\\rapport_geodata_2018117_analyse.txt" 
+    print "C:\\Python27\\python.exe D:\\ov\\py\\luc\\rapport_geodata_analyse_v3.py D:\\ov\\rapport_geodata\\rapport_geodata_2018117.txt D:\\ov\\rapport_geodata\\rapport_geodata_2018117_analyse.txt" 
 
 # Controleert op het juiste aantal argumenten en of het inputbestand bestaat.
 if len(sys.argv) != 3:
