@@ -29,7 +29,7 @@ pause
 echo.
 echo.
 
-C:\python27\arcgis10.4\python.exe <bestandspad pythonscript> <bestandspad input> <bestandspad output>
+"C:\python27\arcgis10.4\python.exe" "<bestandspad pythonscript>" "<bestandspad input>" "<bestandspad output>"
 
 echo.
 echo.
