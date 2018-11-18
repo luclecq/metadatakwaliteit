@@ -1,12 +1,11 @@
-rem =========================================================
+rem =================================================================================================================
 rem
-rem file: uitvoeren_script.txt
-rem van: Luc en Gerard
-rem d.d.: 15-11-18
+rem Uitvoeren controlescript metadatakwaliteit V0.4, november 2018
+rem Luc van der Lecq, Gerard Nienhuis
 rem
-rem doel: start python script op installatie van Overijssel
+rem Doel: start python script op installatie van Overijssel
 rem
-rem =========================================================
+rem =================================================================================================================
 
 @echo off
 
@@ -14,17 +13,17 @@ cls
 
 echo.
 
-echo Automatische controle van metadatakwaliteit V0.4
+echo Uitvoeren van controlescript metadatakwaliteit V0.4
 
-echo.
-echo.
-
-echo ========================================================
- 
 echo.
 echo.
 
 pause
+
+echo.
+echo.
+
+echo ================================================================================================================
 
 echo.
 echo.
@@ -34,7 +33,7 @@ echo.
 echo.
 echo.
 
-echo ========================================================
+echo ================================================================================================================
 
 echo.
 echo.
