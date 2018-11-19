@@ -1,0 +1,27 @@
+=================================================================================================================
+
+Toelichting controlescript metadatakwaliteit
+
+Gemaakt door Luc van der Lecq
+
+=================================================================================================================
+
+Het pythonscript "rapport_geodata_analyse_x.x.py" dient ter automatisering van de controle van de 
+metadatakwaliteit van datasets in het Geoportaal.
+
+De input van dit script moet zijn: een puntkomma-gescheiden metadata-bestand met kolomnamen in de eerste rij.
+De output van dit script zal zijn: identiek aan de input, plus een aantal controlekolommen.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Het batchbestand "uitvoeren_script.bat" versoepelt het opstarten van het pythonscript op installaties van Overijssel.
+
+In het batchbestand ontbreken drie bestandspaden: van het pythonscript, van de input en van de output.
+Het format in het batchbestand is:
+"C:\python27\arcgis10.4\python.exe" "<bestandspad pythonscript>" "<bestandspad input>" "<bestandspad output>"
+
+Klik met de rechtermuisknop op het batchbestand om het te kunnen bewerken.
+
+Dubbelklikken op "uitvoeren_script.bat" voert het batchbestand uit.
+
+=================================================================================================================
