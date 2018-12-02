@@ -1,5 +1,5 @@
-=================================================================================================================
-Toelichting controlescript metadatakwaliteit v0.5, november 2018
+﻿=================================================================================================================
+Toelichting controlescript metadatakwaliteit v0.6, december 2018
 
 Gemaakt door Luc van der Lecq als stageopdracht.
 Begeleiding door Gerard Nienhuis, Provincie Overijssel.
@@ -11,16 +11,35 @@ metadatakwaliteit van datasets in het Overijsselse geoportaal. Het script is ont
 De input van dit script moet zijn: een puntkomma-gescheiden metadata-bestand met kolomnamen in de eerste rij.
 De output van dit script zal zijn: identiek aan de input, plus een aantal controlekolommen.
 
+Voorbeeldregels input:
+"id";"identification";"title";"alternate_title";"map_1";"map_2";"abstract";"min_x";"max_x";"min_y";"max_y";"url_thumbnail";"aantal_bijlages";"file_identifier";"md_identifier";"dataset_md_uuids";"aantal_gekoppelde_datasets";"other_constraints";"use_limitation";"cc_by";"cc_mark";"cc_zero";"in_service";"feitelijk_onterecht_publiek";"layer_names";"http_errors_urls";"http_errors_codes";"ruimtelijk_schema";"metadata_publiek";"data_publiek";"wms_extern_aanwezig";"alleen_wms_extern";"bronmetadata_aanwezig";"content_type";"vector_geen_geometrie";"invalide_urls";"wms_bestaat";"wfs_bestaat";"urls_wms";"urls_wfs";"herzieningsfrequentie";"voltooiing_bestand";"laatste_wijziging_bestand";"publicatie_bestand";"laatste_wijziging_bestandsbeschrijving";"uuid_count";"temporele_dekking_van";"temporele_dekking_tot";"toepassingsschaal_van";"toepassingsschaal_tot";"toepassingsschalen";"resolutie_x";"resolutie_y";"resoluties";"eigenaar_organisatie_1";"eigenaar_website_1";"eigenaar_naam_1";"eigenaar_email_1";"eigenaar_organisatie_2";"eigenaar_website_2";"eigenaar_naam_2";"eigenaar_email_2";
+"260";"e3550ce8-312a-4405-8b64-e18edd237ec7";"Herstructurering bedrijventerreinen";"B6.herstruc_indus_polygon  (b6.b61)";"b6";"b61";"Herstructurering bedrijventerreinen. Alle eenmalige ingrepen in het bedrijventerrein, die tot doel hebben de veroudering van het terrein als geheel te bestrijden en die niet tot het reguliere gemeentelijk onderhoud worden gerekend gericht op een duurzame investering in de vitaliteit van bedrijventerreinen. In een aantal gevallen investeert de provincie daarbij samen met de gemeenten in de publieke ruimte van bedrijventerreinen. De Herstructureringsmaatschappij Bedrijventerreinen Overijssel/HMO, kan als instrument van de provincie Overijssel, samen met bedrijven betrokken zijn bij investeringen in zwaar verouderde private kavels/panden op bedrijventerreinen. Deze investeringen en betrokkenheid zijn in de atlas van Overijssel weergegeven. ";"5.866";"7.038";"52.146";"52.826";"https://metadata.geodataoverijssel.nl/attachment/109102/herstruc_indus.jpg";"0";"86b8a38d-83de-4c0f-948c-ef2aad9eb492";"5e0154d5-f492-408e-973b-73a2d6ed4438";"9afcb8cf-5d36-4061-a01d-a63daa426897";"1";"geen beperkingen|https://creativecommons.org/publicdomain/zero/1.0/deed.nl";"Geen gebruiksbeperkingen|Geoportaal extern|Downloadable data";"Nee";"Nee";"Nee";"Ja";"Nee";"B61_economie:B6_Herstructurering_bedrijventerreinen";"";"";"vector";"Ja";"Ja";"Ja";"Nee";"Ja";"image/jpeg";"Nee";"";"Ja";"Ja";"https://services.geodataoverijssel.nl/geoserver/B61_economie/wms";"https://services.geodataoverijssel.nl/geoserver/B61_economie/wfs";"";"2014-02-26";"2015-03-23";"2018-09-13";"2018-09-13";"1";"2014-02-26";"2014-02-26";"";"";"";"";"";"";"Provincie Overijssel: eenheid Economie en Cultuur";"http://www.overijssel.nl";"Katerberg, Mw Margien";"M.Katerberg@overijssel.nl";"";"";"";"";
+
+Voorbeeldregels output:
+"controle_totaal";"bronmetadata_afwezig";"fout_teken_titel";"fout_teken_abstract";"id";"identification";"title";"alternate_title";"map_1";"map_2";"abstract";"min_x";"max_x";"min_y";"max_y";"url_thumbnail";"aantal_bijlages";"file_identifier";"md_identifier";"dataset_md_uuids";"aantal_gekoppelde_datasets";"other_constraints";"use_limitation";"cc_by";"cc_mark";"cc_zero";"in_service";"feitelijk_onterecht_publiek";"layer_names";"http_errors_urls";"http_errors_codes";"ruimtelijk_schema";"metadata_publiek";"data_publiek";"wms_extern_aanwezig";"alleen_wms_extern";"bronmetadata_aanwezig";"content_type";"vector_geen_geometrie";"invalide_urls";"wms_bestaat";"wfs_bestaat";"urls_wms";"urls_wfs";"herzieningsfrequentie";"voltooiing_bestand";"laatste_wijziging_bestand";"publicatie_bestand";"laatste_wijziging_bestandsbeschrijving";"uuid_count";"temporele_dekking_van";"temporele_dekking_tot";"toepassingsschaal_van";"toepassingsschaal_tot";"toepassingsschalen";"resolutie_x";"resolutie_y";"resoluties";"eigenaar_organisatie_1";"eigenaar_website_1";"eigenaar_naam_1";"eigenaar_email_1";"eigenaar_organisatie_2";"eigenaar_website_2";"eigenaar_naam_2";"eigenaar_email_2";""
+"goed";"nee";"nee";"nee";"260";"e3550ce8-312a-4405-8b64-e18edd237ec7";"Herstructurering bedrijventerreinen";"B6.herstruc_indus_polygon  (b6.b61)";"b6";"b61";"Herstructurering bedrijventerreinen. Alle eenmalige ingrepen in het bedrijventerrein, die tot doel hebben de veroudering van het terrein als geheel te bestrijden en die niet tot het reguliere gemeentelijk onderhoud worden gerekend gericht op een duurzame investering in de vitaliteit van bedrijventerreinen. In een aantal gevallen investeert de provincie daarbij samen met de gemeenten in de publieke ruimte van bedrijventerreinen. De Herstructureringsmaatschappij Bedrijventerreinen Overijssel/HMO, kan als instrument van de provincie Overijssel, samen met bedrijven betrokken zijn bij investeringen in zwaar verouderde private kavels/panden op bedrijventerreinen. Deze investeringen en betrokkenheid zijn in de atlas van Overijssel weergegeven. ";"5.866";"7.038";"52.146";"52.826";"https://metadata.geodataoverijssel.nl/attachment/109102/herstruc_indus.jpg";"0";"86b8a38d-83de-4c0f-948c-ef2aad9eb492";"5e0154d5-f492-408e-973b-73a2d6ed4438";"9afcb8cf-5d36-4061-a01d-a63daa426897";"1";"geen beperkingen|https://creativecommons.org/publicdomain/zero/1.0/deed.nl";"Geen gebruiksbeperkingen|Geoportaal extern|Downloadable data";"Nee";"Nee";"Nee";"Ja";"Nee";"B61_economie:B6_Herstructurering_bedrijventerreinen";"";"";"vector";"Ja";"Ja";"Ja";"Nee";"Ja";"image/jpeg";"Nee";"";"Ja";"Ja";"https://services.geodataoverijssel.nl/geoserver/B61_economie/wms";"https://services.geodataoverijssel.nl/geoserver/B61_economie/wfs";"";"2014-02-26";"2015-03-23";"2018-09-13";"2018-09-13";"1";"2014-02-26";"2014-02-26";"";"";"";"";"";"";"Provincie Overijssel: eenheid Economie en Cultuur";"http://www.overijssel.nl";"Katerberg, Mw Margien";"M.Katerberg@overijssel.nl";"";"";"";"";""
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Het batchbestand "uitvoeren_script.bat" versoepelt het opstarten van het pythonscript op installaties van Overijssel.
+Het batchbestand "uitvoeren_script_x.x.bat" versoepelt het opstarten van het pythonscript op installaties van Overijssel.
 
-In het batchbestand ontbreken drie bestandspaden: van het pythonscript, van de input en van de output.
+In het batchbestand ontbreken drie bestandsnamen: van het pythonscript, van de input en van de output.
 Het format in het batchbestand is:
-"C:\python27\arcgis10.4\python.exe" "<bestandspad pythonscript>" "<bestandspad input>" "<bestandspad output>"
+
+SET python_exe=C:\python27\arcgis10.4\python.exe
+SET python_script=
+SET input=
+SET output=
 
 1. Klik met de rechtermuisknop op het batchbestand om het te kunnen bewerken.
 
-2. Wijzig de drie bestandspaden
+2. Wijzig de drie bestandsnamen
 
-3. Dubbelklikken op "uitvoeren_script.bat" voert het batchbestand uit.
+3. Dubbelklikken op "uitvoeren_script_x.x.bat" voert het batchbestand uit.
+
+Voorbeeldregels batchbestand:
+SET python_exe=C:\python27\arcgis10.4\python.exe
+SET python_script=D:\ov\py\luc\metadatakwaliteit_0.6\rapport_geodata_analyse_0.6.py
+SET input=D:\scratch\rapport_geodata_2018119.txt
+SET output=D:\scratch\rapport_geodata_2018119_analyse.txt
+=================================================================================================================
