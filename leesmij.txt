@@ -1,11 +1,11 @@
 ﻿=================================================================================================================
-Toelichting controlescript metadatakwaliteit v0.6, december 2018
+Toelichting controlescript metadatakwaliteit v0.7, december 2018
 
 Gemaakt door Luc van der Lecq als stageopdracht.
 Begeleiding door Gerard Nienhuis, Provincie Overijssel.
 =================================================================================================================
 
-Het pythonscript "rapport_geodata_analyse_x.x.py" dient ter automatisering van de controle van de 
+Het pythonscript "controleer_metadata_xx.py" dient ter automatisering van de controle van de 
 metadatakwaliteit van datasets in het Overijsselse geoportaal. Het script is ontwikkeld voor Python 2.7.15.
 
 De input van dit script moet zijn: een puntkomma-gescheiden metadata-bestand met kolomnamen in de eerste rij.
@@ -21,25 +21,23 @@ Voorbeeldregels output:
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Het batchbestand "uitvoeren_script_x.x.bat" versoepelt het opstarten van het pythonscript op installaties van Overijssel.
+Het batchbestand "uitvoeren_script_xx.bat" versoepelt het opstarten van het pythonscript op installaties van Overijssel.
 
 In het batchbestand ontbreken drie bestandsnamen: van het pythonscript, van de input en van de output.
 Het format in het batchbestand is:
 
-SET python_exe=C:\python27\arcgis10.4\python.exe
 SET python_script=
 SET input=
 SET output=
 
 1. Klik met de rechtermuisknop op het batchbestand om het te kunnen bewerken.
 
-2. Wijzig de drie bestandsnamen
+2. Wijzig de drie bestandsnamen. Let op: er zijn geen spaties toegestaan bij het declareren van variabelen. 
 
-3. Dubbelklikken op "uitvoeren_script_x.x.bat" voert het batchbestand uit.
+3. Dubbelklikken op "uitvoeren_script_xx.bat" voert het batchbestand uit.
 
 Voorbeeldregels batchbestand:
-SET python_exe=C:\python27\arcgis10.4\python.exe
-SET python_script=D:\ov\py\luc\metadatakwaliteit_0.6\rapport_geodata_analyse_0.6.py
-SET input=D:\scratch\rapport_geodata_2018119.txt
-SET output=D:\scratch\rapport_geodata_2018119_analyse.txt
+SET python_script=D:\ov\py\luc\controleer_metadata_07.py
+SET input=D:\scratch\rapport_geodata_2018126.txt
+SET output=D:\scratch\rapport_geodata_2018126_controle.txt
 =================================================================================================================
