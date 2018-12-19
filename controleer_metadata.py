@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # =================================================================================================================
-# Controlescript metadatakwaliteit v1.0, december 2018
+# Controlescript metadatakwaliteit v1.1, december 2018
 # 
 # Gemaakt door Luc van der Lecq als stageopdracht.
 # Begeleiding door Gerard Nienhuis, Provincie Overijssel.
@@ -26,7 +26,7 @@ scriptnaam = os.path.abspath(__file__)
 starttijd = datetime.datetime.now()
 
 # Print de header.
-print "Controlescript metadatakwaliteit v1.0, gemaakt door Luc van der Lecq \n"
+print "Controlescript metadatakwaliteit v1.1, gemaakt door Luc van der Lecq \n"
 
 # Controleert op de keuze voor lokale bestandsnamen.
 if inputnaam_lokaal == "" and outputnaam_lokaal == "":
@@ -83,6 +83,7 @@ for dataset in data:
     # Voegt nieuwe kolommen toe per dataset.
     dataset.update({
             "controle_totaal": "goed",
+            "controle_melding_aantal": 0,
             "controle_fout": "nee",
             "controle_fout_aantal": 0,
             "controle_fout_detail": "",
@@ -103,7 +104,9 @@ for dataset in data:
             "fout_uniciteit": "nee",             
             "fout_toepassingsschaal": "nee",
             "fout_lengte_samenvatting": "nee",
+            "lengte_samenvatting": "",
             "fout_lengte_titel": "nee",
+            "lengte_titel": "",            
             "fout_spelling_land": "nee",
 #            "fout_https": "nee",
             "fout_combinatie_naam_email": "nee"
@@ -427,6 +430,9 @@ for dataset in data:
         else:
             dataset["controle_totaal"] += ", fout toepassingsschaal"
 
+    # Schrijft het aantal karakters van titel en samenvatting naar een losse controlekolom.
+    dataset["lengte_samenvatting"] = len(dataset["abstract"])
+    dataset["lengte_titel"] = len(dataset["title"])  
     # Controleert op het aantal karakters van titel en samenvatting dat buiten bepaalde grenswaarden ligt.
     if len(dataset["abstract"]) > 2000:
         dataset["fout_lengte_samenvatting"] = "ja"
@@ -535,13 +541,13 @@ for dataset in data:
         dataset["fout_combinatie_naam_email"] = "ja"
         dataset["controle_waarschuwing"] = "ja"
         if dataset["controle_waarschuwing_detail"] == "":
-            dataset["controle_waarschuwing_detail"] = "combinatie naam en email mogelijk fout in contactpersoon 1"
+            dataset["controle_waarschuwing_detail"] = "naam of email fout contactpersoon 1"
         else:
-            dataset["controle_waarschuwing_detail"] += ", combinatie naam en email mogelijk  fout in contactpersoon 1"                
+            dataset["controle_waarschuwing_detail"] += ", naam of email fout contactpersoon 1"                
         if dataset["controle_totaal"] == "goed":
-            dataset["controle_totaal"] = "combinatie naam en email mogelijk fout in contactpersoon 1"
+            dataset["controle_totaal"] = "naam of email fout contactpersoon 1"
         else:
-            dataset["controle_totaal"] += ", combinatie naam en email mogelijk fout in contactpersoon 1"        
+            dataset["controle_totaal"] += ", naam of email fout contactpersoon 1"        
 
 # ---------- Einde metadata-controle ----------
 
@@ -562,10 +568,12 @@ for dataset in data:
     # Telt het aantal fouten en waarschuwingen per dataset.
     dataset["controle_fout_aantal"] = dataset["controle_fout_detail"].count(",")
     dataset["controle_waarschuwing_aantal"] = dataset["controle_waarschuwing_detail"].count(",")
+    dataset["controle_melding_aantal"] = dataset["controle_fout_aantal"] + dataset["controle_waarschuwing_aantal"]
 
 # Voegt de namen van de nieuwe kolommen toe aan de originele koptekstvolgorde.
 kopteksten = [
         "controle_totaal",
+        "controle_melding_aantal",
         "controle_fout",
         "controle_fout_aantal",
         "controle_fout_detail",
@@ -586,7 +594,9 @@ kopteksten = [
         "fout_uniciteit",
         "fout_toepassingsschaal",
         "fout_lengte_samenvatting",
+        "lengte_samenvatting",
         "fout_lengte_titel",
+        "lengte_titel",
         "fout_spelling_land",
 #        "fout_https",
         "fout_combinatie_naam_email"

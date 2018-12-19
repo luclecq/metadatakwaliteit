@@ -1,5 +1,5 @@
 ﻿=================================================================================================================
-Leesmij controlescript metadatakwaliteit v1.0, december 2018
+Leesmij controlescript metadatakwaliteit v1.1, december 2018
 
 Gemaakt door Luc van der Lecq als stageopdracht.
 Begeleiding door Gerard Nienhuis, Provincie Overijssel.
@@ -59,10 +59,16 @@ Controle 2: Verouderde bestanden
                 "ja" in kolom "verouderd_bestand"
                 "verouderd bestand" in kolom "controle_totaal"
                 
-Controle 3: Verboden karakters - Titel
-    Voorwaarde: Controleert op verboden karakters !@#$%^&*<>,.{}[]?/;:" in kolom "title"
-    Melding:    "ja" in kolom "controle_waarschuwing" voor karakters :.,
-                "ja" in kolom "controle_fout" voor karakters !@#$%^&*<>{}[]?/;"
+Controle 3A: Verboden karakters - Titel
+    Voorwaarde: Controleert op verboden karakters !@#$%^&*<>{}[]?/;" in kolom "title"
+    Melding:    "ja" in kolom "controle_fout"
+                "ja" in kolom "fout_teken_titel"
+                "<karakter>" in kolom "fout_teken_titel_karakter"
+                "fout teken in titel" in kolom "controle_totaal"
+
+Controle 3B: Verboden karakters - Titel
+    Voorwaarde: Controleert op verboden karakters :., in kolom "title"
+    Melding:    "ja" in kolom "controle_waarschuwing"
                 "ja" in kolom "fout_teken_titel"
                 "<karakter>" in kolom "fout_teken_titel_karakter"
                 "fout teken in titel" in kolom "controle_totaal"
@@ -93,11 +99,16 @@ Controle 7: Beperkingen - Geen CC met publieke data
                 "ja" in kolom "fout_beperkingen"
                 "publiek zonder CC" in kolom "controle_totaal"
 
-Controle 8: Beperkingen - CC-by of CC-mark met Overijssel als distributeur
-    Voorwaarde: Controleert op het voorkomen van "by" of "mark" in kolom "other_constraints" terwijl "Provincie Overijssel" in kolom "distributeur_naam_organisatie" voorkomt
+Controle 8A: Beperkingen - CC-by met Overijssel als distributeur
+    Voorwaarde: Controleert op het voorkomen van "by" in kolom "other_constraints" terwijl "Provincie Overijssel" in kolom "distributeur_naam_organisatie" voorkomt
     Melding:    "ja" in kolom "controle_fout"
                 "ja" in kolom "fout_beperkingen"
                 "fout CC-by" in kolom "controle_totaal" voor CC-by
+				
+Controle 8B: Beperkingen - CC-mark met Overijssel als distributeur
+    Voorwaarde: Controleert op het voorkomen van "mark" in kolom "other_constraints" terwijl "Provincie Overijssel" in kolom "distributeur_naam_organisatie" voorkomt
+    Melding:    "ja" in kolom "controle_fout"
+                "ja" in kolom "fout_beperkingen"
                 "fout CC-mark" in kolom "controle_totaal" voor CC-mark
 
 Controle 9: Beperkingen - CC-zero met Overijssel niet als distributeur
@@ -118,12 +129,22 @@ Controle 11: Spelling Overijssel in distributeur
                 "ja" in kolom "fout_spelling_distributeur"
                 "foute spelling distributeur" in kolom "controle_totaal"
 
-Controle 12: Uniciteit van titel, samenvatting en ID
+Controle 12A: Uniciteit van titel
     Voorwaarde: Controleert op uniciteit van waardes in "title", "abstract", "identification"
     Melding:    "ja" in kolom "controle_fout"
                 "ja" in kolom "fout_uniciteit"
                 "titel niet uniek" in kolom "controle_totaal" voor titel
+				
+Controle 12B: Uniciteit van samenvatting
+    Voorwaarde: Controleert op uniciteit van waardes in "title", "abstract", "identification"
+    Melding:    "ja" in kolom "controle_fout"
+                "ja" in kolom "fout_uniciteit"
                 "samenvatting niet uniek" in kolom "controle_totaal" voor samenvatting
+				
+Controle 12C: Uniciteit van ID
+    Voorwaarde: Controleert op uniciteit van waardes in "title", "abstract", "identification"
+    Melding:    "ja" in kolom "controle_fout"
+                "ja" in kolom "fout_uniciteit"
                 "identification niet uniek" in kolom "controle_totaal" voor id
 
 Controle 13: Toepassingsschalen - Minimum groter dan maximum
@@ -144,23 +165,39 @@ Controle 15: Toepassingsschalen - Grenswaarden
                 "ja" in kolom "fout_toepassingsschaal"
                 "fout toepassingsschaal" in kolom "controle_totaal"
 
-Controle 16: Aantal karakters in samenvatting - Grenswaarden
-    Voorwaarde: Controleert op het aantal karakters in de kolom "abstract" dat kleiner is dan 100 of groter is dan 2000
-    Melding:    "ja" in kolom "controle_fout" voor groter dan 2000
-                "ja" in kolom "waarschuwing_fout" voor kleiner dan 100
+Controle 16A: Aantal karakters in samenvatting - Grenswaarden
+    Voorwaarde: Controleert op het aantal karakters in de kolom "abstract" dat kleiner is dan 100
+	Melding:	"ja" in kolom "waarschuwing_fout"
                 "ja" in kolom "fout_lengte_samenvatting"
-                "samenvatting te kort" of "samenvatting te lang" in kolom "controle_totaal"
+                "samenvatting te kort" in kolom "controle_totaal"
+				
+Controle 16B: Aantal karakters in samenvatting - Grenswaarden
+    Voorwaarde: Controleert op het aantal karakters in de kolom "abstract" dat groter is dan 2000
+    Melding:    "ja" in kolom "controle_fout"
+                "ja" in kolom "fout_lengte_samenvatting"
+                "samenvatting te lang" in kolom "controle_totaal"
 
-Controle 17: Aantal karakters in titel - Grenswaarden
-    Voorwaarde: Controleert op het aantal karakters in de kolom "titel" dat kleiner is dan 10 of groter is dan 100
+Controle 17A: Aantal karakters in titel - Grenswaarden
+    Voorwaarde: Controleert op het aantal karakters in de kolom "titel" dat kleiner is dan 10
     Melding:    "ja" in kolom "controle_waarschuwing"
                 "ja" in kolom "fout_lengte_samenvatting"
-                "titel kort" of "titel lang" in kolom "controle_totaal"
+                "titel kort" in kolom "controle_totaal"
+				
+Controle 17B: Aantal karakters in titel - Grenswaarden
+    Voorwaarde: Controleert op het aantal karakters in de kolom "titel" dat groter is dan 100
+    Melding:    "ja" in kolom "controle_waarschuwing"
+                "ja" in kolom "fout_lengte_samenvatting"
+                "titel lang" in kolom "controle_totaal"
                 
-Controle 18: Https websites contactpersonen en organisaties (Tijdelijk uitgeschakeld)
-    Voorwaarde: Controleert op het ontbreken van "https" in de kolommen "auteur_metadata_website_organisatie", "distributeur_website_organisatie", "bron_website_organisatie_1", "bron_website_organisatie_2", "bron_website_organisatie_3", "bron_website_organisatie_4"
-    Melding:    "ja" in kolom "controle_fout" voor kolom "bron_website_organisatie_1"
-                "ja" in kolom "waarschuwing_fout" voor "auteur_metadata_website_organisatie", "distributeur_website_organisatie", "bron_website_organisatie_2", "bron_website_organisatie_3", "bron_website_organisatie_4"
+Controle 18A: Https websites contactpersonen en organisaties (Tijdelijk uitgeschakeld)
+    Voorwaarde: Controleert op het ontbreken van "https" in de kolomm "bron_website_organisatie_1"
+    Melding:    "ja" in kolom "controle_fout"
+                "ja" in kolom "fout_https"
+                "fout https in bron_website_organisatie_1" in kolom "controle_totaal"
+				
+Controle 18B: Https websites contactpersonen en organisaties (Tijdelijk uitgeschakeld)
+    Voorwaarde: Controleert op het ontbreken van "https" in de kolommen "auteur_metadata_website_organisatie", "distributeur_website_organisatie", "bron_website_organisatie_2", "bron_website_organisatie_3", "bron_website_organisatie_4"
+    Melding:    "ja" in kolom "waarschuwing_fout"
                 "ja" in kolom "fout_https"
                 "fout https in <kolomnaam>" in kolom "controle_totaal"  
 
@@ -168,7 +205,7 @@ Controle 19: Spelling landsnamen contactpersonen en organisaties
     Voorwaarde: Controleert op waardes in kolommen "auteur_metadata_land_contactpersoon", "bron_land_contactpersoon_1", "bron_land_contactpersoon_2", "bron_land_contactpersoon_3", "bron_land_contactpersoon_4", "distributeur_land_contactpersoon" die afwijken van "Nederland"
     Melding:    "ja" in kolom "controle_waarschuwing"
                 "ja" in kolom "fout_spelling_land"
-                "foute spelling land in <kolom>" in kolom "controle_totaal"
+                "foute spelling land in <kolomnaam>" in kolom "controle_totaal"
                 
 Controle 20: Uniciteit van email-naam combinaties
     Voorwaarde: Controleert op uniciteit van combinaties van waardes in kolommen "bron_email_contactpersoon_1" en "bron_naam_contactpersoon_1" 
