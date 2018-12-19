@@ -1,5 +1,5 @@
 rem =================================================================================================================
-rem Uitvoeren controlescript metadatakwaliteit v1.0, december 2018
+rem Uitvoeren controlescript metadatakwaliteit v1.1, december 2018
 rem 
 rem Gemaakt door Luc van der Lecq en Gerard Nienhuis.
 rem
@@ -31,7 +31,7 @@ cls
 
 echo.
 
-echo Uitvoeren van controlescript metadatakwaliteit v1.0
+echo Uitvoeren van controlescript metadatakwaliteit v1.1
 
 echo.
 
